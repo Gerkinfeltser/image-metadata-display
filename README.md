@@ -1,6 +1,6 @@
 # Image Metadata Display Extension for VSCode
 
-This extension for Visual Studio Code allows users to view metadata of PNG images directly within the editor. With a simple command, you can inspect the embedded metadata of any PNG file in your workspace. It was originally created for easily inspecting [ComfyUI](https://github.com/comfyanonymous/ComfyUI) images' metadata from within VSCode.
+This extension for Visual Studio Code allows users to view metadata of PNG images directly within the editor. With a simple command, you can inspect the embedded metadata of any PNG file in your workspace. It was originally created for easily inspecting [ComfyUI](https://github.com/comfyanonymous/ComfyUI) images' metadata from within VSCode. Special thanks to ChatGPT for all the assistance.
 
 ## Features
 
@@ -18,7 +18,7 @@ To view the metadata of a PNG file, you have several options:
 
 To install the extension, follow these steps:
 
-1. Download the `.vsix` file for the Image Metadata Display extension.
+1. Download the `.vsix.zip` file for the Image Metadata Display extension & unzip somewhere.
 2. Open Visual Studio Code.
 3. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl+Shift+X`.
 4. Click on `...` at the top of the Extensions view, and select "Install from VSIX...".
@@ -41,7 +41,6 @@ This extension contributes the following command:
 - To retain a metadata document from being overtaken by another, pin the doc via the titlebar right-click "Pin" menu entry.
 
 ## Release Notes
-https://github.com/Gerkinfeltser/image-metadata-display.git
 
 ### 0.0.3
 Initial release of Image Metadata Display.
