@@ -1,0 +1,64 @@
+{
+  "name": "image-metadata-inspector",
+  "displayName": "Image Metadata Inspector",
+  "description": "Inspect and display metadata of PNG images.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gerkinfeltser/image-metadata-display.git"
+  },
+  "version": "0.0.3",
+  "publisher": "Gerkinfeltser",
+  "icon": "icon/image_metadata_viewer_icon.png",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+        {
+            "command": "extension.inspectPngMetadata",
+            "title": "Inspect PNG Metadata"
+        }
+    ],
+    "menus": {
+        "explorer/context": [
+            {
+                "when": "resourceExtname == .png",
+                "command": "extension.inspectPngMetadata",
+                "group": "navigation"
+            }
+        ],
+        "commandPalette": [
+            {
+                "command": "extension.inspectPngMetadata"
+            }
+        ],
+        "editor/title/context": [
+          {
+              "when": "resourceExtname == .png",
+              "command": "extension.inspectPngMetadata",
+              "group": "navigation"
+            }
+        ]
+    }
+},
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "node ./node_modules/vscode-test/out/runTest.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.87.2",
+    "@vscode/test-electron": "^2.3.9",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "exiftool-vendored": "^24.6.0"
+  }
+}
