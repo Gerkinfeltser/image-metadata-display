@@ -2,6 +2,8 @@
 
 This extension for Visual Studio Code allows users to view metadata of PNG images directly within the editor. With a simple command, you can inspect the embedded metadata of any PNG file in your workspace. It was originally created for easily inspecting [ComfyUI](https://github.com/comfyanonymous/ComfyUI) images' metadata from within VSCode. Special thanks to ChatGPT for all the assistance.
 
+!["Inspect PNG Metadata via explorer right-click"](images/explorer_example.png)
+
 ## Features
 
 - **Inspect PNG Metadata** - Opens a read-only document next to the image that displays the PNG file in question's metadata.
