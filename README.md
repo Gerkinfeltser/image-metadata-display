@@ -20,7 +20,7 @@ To view the metadata of a PNG file, you have several options:
 
 To install the extension, follow these steps:
 
-1. Download the `.vsix.zip` file for the Image Metadata Display extension & unzip somewhere.
+1. Download a/the [`.vsix.zip` file](https://github.com/Gerkinfeltser/image-metadata-display/releases) for the Image Metadata Display extension & unzip somewhere.
 2. Open Visual Studio Code.
 3. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl+Shift+X`.
 4. Click on `...` at the top of the Extensions view, and select "Install from VSIX...".
