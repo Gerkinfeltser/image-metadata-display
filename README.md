@@ -6,7 +6,7 @@ This extension for Visual Studio Code allows users to view metadata of PNG image
 
 ## Features
 
-- **Inspect PNG Metadata** - Opens a read-only document next to the image that displays the PNG file in question's metadata.
+- **Inspect JPG, PNG & WEPB Metadata** - Opens a read-only document next to the image that displays the PNG file in question's metadata.
 
 ## Usage
 
@@ -39,10 +39,13 @@ This extension contributes the following command:
 
 ## Known Issues
 
-- Currently only PNGs are supported
 - To retain a metadata document from being overtaken by another, pin the doc via the titlebar right-click "Pin" menu entry.
+- Extracting the workflow json portion to its own json file does not seem to create a working workflow in Comfyui. Maybe *someday*...
 
 ## Release Notes
+
+### 0.0.4
+Added support for JPG & WEBP files.
 
 ### 0.0.3
 Initial release of Image Metadata Display.

@@ -28,9 +28,9 @@ const vscode = __importStar(require("vscode"));
 const exiftool_vendored_1 = require("exiftool-vendored");
 function activate(context) {
     const metadataProvider = new MetadataProvider();
-    const scheme = 'png-metadata';
+    const scheme = 'image-metadata'; // Generalized scheme name
     context.subscriptions.push(vscode.workspace.registerTextDocumentContentProvider(scheme, metadataProvider));
-    let disposable = vscode.commands.registerCommand('extension.inspectPngMetadata', async (uri) => {
+    let disposable = vscode.commands.registerCommand('extension.inspectImageMetadata', async (uri) => {
         if (uri) {
             // Open the image using vscode.open
             await vscode.commands.executeCommand('vscode.open', uri, { preview: false, viewColumn: vscode.ViewColumn.One });
@@ -38,11 +38,11 @@ function activate(context) {
             await showMetadata(uri, vscode.ViewColumn.Two);
         }
         else {
-            // Command Palette execution: Ask the user to select a PNG file
+            // Command Palette execution: Ask the user to select an image file
             const fileUris = await vscode.window.showOpenDialog({
                 canSelectMany: false,
                 openLabel: 'Open',
-                filters: { 'Images': ['png'] }
+                filters: { 'Images': ['png', 'webp', 'jpg'] } // Allow JPEG, PNG, and WebP files
             });
             if (fileUris && fileUris.length > 0) {
                 // Open the image using vscode.open
@@ -51,7 +51,7 @@ function activate(context) {
                 await showMetadata(fileUris[0], vscode.ViewColumn.Two);
             }
             else {
-                vscode.window.showInformationMessage('No PNG file was selected.');
+                vscode.window.showInformationMessage('No image file was selected.');
             }
         }
     });
@@ -59,15 +59,15 @@ function activate(context) {
 }
 exports.activate = activate;
 async function showMetadata(fileUri, viewColumn) {
-    const scheme = 'png-metadata';
-    if (fileUri.fsPath.toLowerCase().endsWith('.png')) {
+    const scheme = 'image-metadata'; // Generalized scheme name
+    if (fileUri.fsPath.toLowerCase().endsWith('.png') || fileUri.fsPath.toLowerCase().endsWith('.webp') || fileUri.fsPath.toLowerCase().endsWith('.jpg')) { // Check for JPEG, PNG, and WebP
         const metadataUri = vscode.Uri.parse(`${scheme}:${fileUri.fsPath}.metadata`);
         try {
             const doc = await vscode.workspace.openTextDocument(metadataUri);
             await vscode.window.showTextDocument(doc, { viewColumn: viewColumn, preserveFocus: true });
         }
         catch (e) {
-            vscode.window.showErrorMessage("Failed to show PNG metadata.");
+            vscode.window.showErrorMessage("Failed to show image metadata.");
         }
     }
 }
