@@ -1,8 +1,8 @@
 # Image Metadata Display Extension for VSCode
 
-This extension for Visual Studio Code allows users to view metadata of PNG images directly within the editor. With a simple command, you can inspect the embedded metadata of any PNG file in your workspace. It was originally created for easily inspecting [ComfyUI](https://github.com/comfyanonymous/ComfyUI) images' metadata from within VSCode. Special thanks to ChatGPT for all the assistance.
+This extension for Visual Studio Code allows users to view metadata of PNG images directly within the editor. With a simple command, you can inspect the embedded metadata of any JPG, PNG or WEBP file in your workspace (& beyond via command palette). It was originally created for easily inspecting [ComfyUI](https://github.com/comfyanonymous/ComfyUI) images' metadata from within VSCode. Special thanks to ChatGPT for all the assistance.
 
-!["Inspect PNG Metadata via explorer right-click"](images/explorer_example.png)
+!["Inspect JPG, PNG & WEBP Metadata via explorer right-click"](images/explorer_example.png)
 
 ## Features
 
@@ -35,12 +35,13 @@ The extension will be installed and ready for use.
 ## Extension Settings
 
 This extension contributes the following command:
-- `extension.inspectPngMetadata`: Inspect PNG Metadata
+- `extension.inspectImageMetadata`: Inspect Image Metadata
 
-## Known Issues
+## Known Issues/Future Work
 
 - To retain a metadata document from being overtaken by another, pin the doc via the titlebar right-click "Pin" menu entry.
 - Extracting the workflow json portion to its own json file does not seem to create a working workflow in Comfyui. Maybe *someday*...
+- Figure out a way to make this extensions smaller. It seems crazy that this extension is 10 megabytes, am-I-right?
 
 ## Release Notes
 
