@@ -1,21 +1,25 @@
-image-metadata-inspector-*.vsix
+# Ignore built VSIX package files
+*.vsix
+
+# Ignore Aider-related files and cache directories
 .aider*
+
+# Ignore environment variable files
 .env
 
-# Ignore the node_modules directory
+# Ignore node_modules directory
 node_modules/
 
-# Ignore the out directory
-/out/
+# Ignore build output directory
+out/
 
 # Ignore log files
 *.log
 
-# Ignore environment variable files
-*.env
-
-# Ignore macOS metadata files
+# Ignore macOS and Windows system metadata files
 .DS_Store
+Thumbs.db
 
-# Ignore VSCode settings (if not shared)
+# Ignore VS Code-specific and helper files
 .vscode/
+.vscode-test/

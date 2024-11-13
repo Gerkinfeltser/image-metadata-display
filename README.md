@@ -10,6 +10,12 @@ This extension for Visual Studio Code allows users to view metadata of PNG, JPG,
 - **Prettified JSON Metadata** - If the metadata contains JSON strings, they are displayed in a prettified format for better readability.
 - **Output Console Messages** - Debug and informational messages are logged to the VS Code Output console for better troubleshooting and visibility.
 
+## Installation from VSIX
+
+To manually install:
+1. Download the `.vsix` file from the latest [release](https://github.com/Gerkinfeltser/image-metadata-display/releases).
+2. In VS Code, go to **Extensions** > **...** > **Install from VSIX...**, and select the downloaded file.
+
 ## Usage
 
 To view the metadata of an image file, you have several options:
@@ -31,22 +37,6 @@ To view the debug and informational messages logged by the extension:
 2. Select the `Image Metadata Extension` channel from the dropdown menu.
 3. Run your extension and perform actions to trigger the debug messages.
 
-## Installation
-
-To install the extension, follow these steps:
-
-1. **Download the `.vsix` file**:
-   - Go to the [releases page](https://github.com/Gerkinfeltser/image-metadata-display/releases) and download the latest `.vsix.zip` file.
-   - Unzip the file to a location of your choice.
-2. **Open Visual Studio Code**:
-   - Launch Visual Studio Code.
-3. **Install the extension**:
-   - Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl+Shift+X`.
-   - Click on `...` at the top of the Extensions view, and select "Install from VSIX...".
-   - Locate the `.vsix` file you downloaded and select it.
-
-The extension will be installed and ready for use.
-
 ## Requirements
 
 - Visual Studio Code version 1.87.0 or higher.
@@ -59,7 +49,7 @@ This extension contributes the following command:
 ## Known Issues/Future Work
 
 - Extracting the workflow JSON portion to its own JSON file does not seem to create a working workflow in Comfyui. Maybe *someday*...
-- So far this has only been tested on Windows (10) VS Code.
+- So far this has only been tested on Windows (10) VS Code. Your mileage on other platforms may vary.
 
 ## Contributing
 

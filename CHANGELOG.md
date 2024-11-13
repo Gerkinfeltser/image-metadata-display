@@ -1,14 +1,14 @@
 # Change Log
 
-## [0.0.5]
+## [0.0.5] - 2023-11-13
 
 ### Added
-- Output Console Messages - Debug and informational messages are logged to the VS Code Output console for better troubleshooting and visibility.
+- New logging feature: Debug and informational messages are now logged to the VS Code Output console for better troubleshooting.
+- Exclude unnecessary files from the `.vsix` package using `.vscodeignore`, keeping the extension package size minimal.
+- Instructions for installing from a `.vsix` file are now included in the README.
 
 ### Changed
-- Enhanced README with detailed installation, usage, and contribution info.
-- Made built extension ignore more robust.
-- Updated version number and added a few more entries to `.gitignore`.
+- Enhanced `.gitignore` and `.vscodeignore` to keep the repository and `.vsix` package clean from development-specific files.
 
 ## [0.0.4] - 2023-10-01
 
