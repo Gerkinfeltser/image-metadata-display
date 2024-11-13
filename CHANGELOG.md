@@ -13,6 +13,7 @@
 - User information messages for extension activation, usage, and deactivation.
 - A screenshot to make the README.md look cooler.
 - Enhanced README with detailed installation, usage, and contribution info.
+- Output Console Messages - Debug and informational messages are logged to the VS Code Output console for better troubleshooting and visibility.
 
 ### Changed
 - Updated README.md to be correct.
