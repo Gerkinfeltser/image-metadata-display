@@ -7,6 +7,7 @@ This extension for Visual Studio Code allows users to view metadata of PNG, JPG,
 ## Features
 
 - **Inspect JPG, PNG & WEBP Metadata** - Opens a read-only document next to the image that displays the image file's metadata.
+- **Prettified JSON Metadata** - If the metadata contains JSON strings, they are displayed in a prettified format for better readability.
 
 ## Usage
 
