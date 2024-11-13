@@ -2,7 +2,7 @@
 
 This extension for Visual Studio Code allows users to view metadata of PNG, JPG, and WEBP images directly within the editor. With a simple command, you can inspect the embedded metadata of any image file in your workspace (and beyond via command palette). It was originally created for easily inspecting [ComfyUI](https://github.com/comfyanonymous/ComfyUI) images' metadata from within VSCode. Special thanks to ChatGPT for all the assistance.
 
-!["Inspect JPG, PNG & WEBP Metadata via explorer right-click"](images/explorer_example.png)
+!["Inspect JPG, PNG & WEBP Metadata via explorer right-click"](images/explorer_example.jpg)
 
 ## Features
 
