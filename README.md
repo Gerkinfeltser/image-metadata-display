@@ -60,14 +60,6 @@ This extension contributes the following command:
 - Extracting the workflow JSON portion to its own JSON file does not seem to create a working workflow in Comfyui. Maybe *someday*...
 - Figure out a way to make this extension smaller. It seems crazy that this extension is 10 megabytes, am-I-right?
 
-## Release Notes
-
-### 0.0.4
-Added support for JPG & WEBP files.
-
-### 0.0.3
-Initial release of Image Metadata Display.
-
 ## Contributing
 
 We welcome contributions to the Image Metadata Display extension. To contribute, please follow these steps:
@@ -97,3 +89,7 @@ This extension is released under the [MIT License](LICENSE).
 
 - [ExifTool](https://exiftool.org/) - Used for reading image metadata.
 - [vscode](https://code.visualstudio.com/) - Visual Studio Code editor.
+
+## Changelog
+
+For detailed release notes, please see the [CHANGELOG.md](CHANGELOG.md) file.
