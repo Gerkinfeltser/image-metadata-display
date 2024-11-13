@@ -78,6 +78,17 @@ We welcome contributions to the Image Metadata Display extension. To contribute,
 4. Push your changes to your fork.
 5. Open a pull request to the main repository.
 
+### Build Instructions
+
+To build the extension, follow these steps:
+
+1. **Clone the repository**:
+   - Clone the repository to your local machine.
+2. **Install dependencies**:
+   - Run `npm install` to install the necessary dependencies.
+3. **Build the extension**:
+   - Run `npm run build` to build the extension. This will generate the contents of the `\out` directory.
+
 ## License
 
 This extension is released under the [MIT License](LICENSE).

@@ -1,3 +1,6 @@
 image-metadata-inspector-*.vsix
 .aider*
 .env
+
+# Ignore the out directory
+/out/
