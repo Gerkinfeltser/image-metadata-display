@@ -1,8 +1,10 @@
 import * as vscode from 'vscode';
 import { ExifTool } from 'exiftool-vendored';
 
+const outputChannel = vscode.window.createOutputChannel('Image Metadata Extension');
+
 export function activate(context: vscode.ExtensionContext) {
-    vscode.window.showInformationMessage('Image Metadata Extension is now active!');
+    outputChannel.appendLine('Image Metadata Extension is now active!');
     const metadataProvider = new MetadataProvider();
     const scheme = 'image-metadata'; // Generalized scheme name
     context.subscriptions.push(vscode.workspace.registerTextDocumentContentProvider(scheme, metadataProvider));
@@ -27,7 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
                 // Show metadata in the second column
                 await showMetadata(fileUris[0], vscode.ViewColumn.Two);
             } else {
-                vscode.window.showInformationMessage('No image file was selected.');
+                outputChannel.appendLine('No image file was selected.');
             }
         }
     });
@@ -36,7 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 async function showMetadata(fileUri: vscode.Uri, viewColumn: vscode.ViewColumn) {
-    vscode.window.showInformationMessage('Showing image metadata...');
+    outputChannel.appendLine('Showing image metadata...');
     const scheme = 'image-metadata'; // Generalized scheme name
     if (fileUri.fsPath.toLowerCase().endsWith('.png') || fileUri.fsPath.toLowerCase().endsWith('.webp') || fileUri.fsPath.toLowerCase().endsWith('.jpg')) { // Check for JPEG, PNG, and WebP
         const metadataUri = vscode.Uri.parse(`${scheme}:${fileUri.fsPath}.metadata`);
@@ -44,7 +46,7 @@ async function showMetadata(fileUri: vscode.Uri, viewColumn: vscode.ViewColumn) 
             const doc = await vscode.workspace.openTextDocument(metadataUri);
             await vscode.window.showTextDocument(doc, { viewColumn: viewColumn, preserveFocus: true });
         } catch (e) {
-            vscode.window.showErrorMessage("Failed to show image metadata.");
+            outputChannel.appendLine(`Failed to show image metadata.`);
         }
     }
 }
@@ -66,6 +68,7 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
             });
             return metadataEntries.join('\n');
         } catch (err) {
+            outputChannel.appendLine(`Failed to read the image metadata: ${(err as Error).message}`);
             return `Failed to read the image metadata: ${(err as Error).message}`;
         }
     }
@@ -81,6 +84,6 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
 }
 
 export function deactivate() {
-    vscode.window.showInformationMessage('Image Metadata Extension is now deactivated.');
+    outputChannel.appendLine('Image Metadata Extension is now deactivated.');
     new ExifTool().end();
 }
