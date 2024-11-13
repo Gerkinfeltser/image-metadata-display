@@ -1,12 +1,27 @@
-.vscode/**
-.vscode-test/**
-src/**
+# Exclude VS Code-specific and helper files
+.vscode/
+.vscode-test/
+.vsc-extension-quickstart.md
 .gitignore
 .yarnrc
-vsc-extension-quickstart.md
+
+# Exclude original TypeScript source files if the compiled JS is in `out/`
+src/**/*.ts
+
+# Exclude TypeScript configuration files and source maps
 **/tsconfig.json
-**/.eslintrc.json
 **/*.map
-**/*.ts
-**/.vscode-test.*
-.aider/**
+**/.eslintrc.json
+
+# Exclude Aider-related files and directories
+.aider*
+.aider.tags.cache.v3/
+**/.aider/**
+
+# Exclude node_modules
+node_modules/
+
+# Exclude any other unnecessary files
+*.log
+.DS_Store
+Thumbs.db
