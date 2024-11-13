@@ -4,8 +4,6 @@
 
 ### Added
 - New logging feature: Debug and informational messages are now logged to the VS Code Output console for better troubleshooting.
-- Exclude unnecessary files from the `.vsix` package using `.vscodeignore`, keeping the extension package size minimal.
-- Instructions for installing from a `.vsix` file are now included in the README.
 
 ### Changed
 - Enhanced `.gitignore` and `.vscodeignore` to keep the repository and `.vsix` package clean from development-specific files.
