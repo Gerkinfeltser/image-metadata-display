@@ -49,26 +49,17 @@ The extension will be installed and ready for use.
 
 ## Requirements
 
-- Visual Studio Code version 1.87.2 or higher.
+- Visual Studio Code version 1.87.0 or higher.
 
 ## Extension Settings
 
 This extension contributes the following command:
 - `extension.inspectImageMetadata`: Inspect Image Metadata
 
-## Troubleshooting
-
-- **Metadata document is overtaken by another**:
-  - Pin the document via the titlebar right-click "Pin" menu entry.
-- **Extracting the workflow JSON portion to its own JSON file does not work**:
-  - This is a known issue. We are working on a solution.
-- **Extension size is large**:
-  - The extension is currently 10 megabytes, which seems large. We are investigating ways to reduce the size.
-
 ## Known Issues/Future Work
 
 - Extracting the workflow JSON portion to its own JSON file does not seem to create a working workflow in Comfyui. Maybe *someday*...
-- Figure out a way to make this extension smaller. It seems crazy that this extension is 10 megabytes, am-I-right?
+- So far this has only been tested on Windows (10) VS Code.
 
 ## Contributing
 
@@ -91,14 +82,11 @@ To build the extension, follow these steps:
 3. **Build the extension**:
    - Run `npm run build` to build the extension. This will generate the contents of the `\out` directory.
 
-## License
-
-This extension is released under the [MIT License](LICENSE).
-
 ## Acknowledgments
 
 - [ExifTool](https://exiftool.org/) - Used for reading image metadata.
 - [vscode](https://code.visualstudio.com/) - Visual Studio Code editor.
+- [ComfyUI](https://github.com/comfyanonymous/ComfyUI) - Node based Image/Everything Generator
 
 ## Changelog
 
