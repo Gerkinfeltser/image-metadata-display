@@ -8,6 +8,7 @@ This extension for Visual Studio Code allows users to view metadata of PNG, JPG,
 
 - **Inspect JPG, PNG & WEBP Metadata** - Opens a read-only document next to the image that displays the image file's metadata.
 - **Prettified JSON Metadata** - If the metadata contains JSON strings, they are displayed in a prettified format for better readability.
+- **Output Console Messages** - Debug and informational messages are logged to the VS Code Output console for better troubleshooting and visibility.
 
 ## Usage
 
@@ -21,6 +22,14 @@ To view the metadata of an image file, you have several options:
    - Open the Command Palette by pressing `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS).
    - Type "Inspect Image Metadata" and select it.
    - A dialogue box will open to select the image you'd like to inspect.
+
+## Viewing Output Console Messages
+
+To view the debug and informational messages logged by the extension:
+
+1. Open the Output panel in VS Code by selecting `View` > `Output` or using the shortcut `Ctrl+Shift+U` (Windows/Linux) or `Cmd+Shift+U` (macOS).
+2. Select the `Image Metadata Extension` channel from the dropdown menu.
+3. Run your extension and perform actions to trigger the debug messages.
 
 ## Installation
 
