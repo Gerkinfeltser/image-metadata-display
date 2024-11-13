@@ -1,8 +1,6 @@
 # Change Log
 
-All notable changes to the "image-metadata-display" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+A changelog is a curated, chronologically ordered list of notable changes for each version of a project, making it easier for users and contributors to track updates.
 
 ## [Unreleased]
 
