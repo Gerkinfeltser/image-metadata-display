@@ -49,7 +49,8 @@
     "vscode:prepublish": "tsc -p ./",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "test": "node ./node_modules/vscode-test/out/runTest.js"
+    "test": "node ./node_modules/vscode-test/out/runTest.js",
+    "build": "npm run compile"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
