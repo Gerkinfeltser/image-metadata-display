@@ -38,7 +38,8 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 async function showMetadata(fileUri: vscode.Uri, viewColumn: vscode.ViewColumn) {
-    outputChannel.appendLine('Showing image metadata...');
+    const fileName = fileUri.fsPath.split('\\').pop() || fileUri.fsPath.split('/').pop() || 'Unknown';
+    outputChannel.appendLine(`Showing image metadata for ${fileName}...`);
     const scheme = 'image-metadata'; // Generalized scheme name
     if (fileUri.fsPath.toLowerCase().endsWith('.png') || fileUri.fsPath.toLowerCase().endsWith('.webp') || fileUri.fsPath.toLowerCase().endsWith('.jpg')) { // Check for JPEG, PNG, and WebP
         const metadataUri = vscode.Uri.parse(`${scheme}:${fileUri.fsPath}.metadata`);
@@ -46,7 +47,7 @@ async function showMetadata(fileUri: vscode.Uri, viewColumn: vscode.ViewColumn) 
             const doc = await vscode.workspace.openTextDocument(metadataUri);
             await vscode.window.showTextDocument(doc, { viewColumn: viewColumn, preserveFocus: true });
         } catch (e) {
-            outputChannel.appendLine(`Failed to show image metadata.`);
+            outputChannel.appendLine(`Failed to show image metadata for ${fileName}.`);
         }
     }
 }
@@ -56,6 +57,7 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
 
     async provideTextDocumentContent(uri: vscode.Uri): Promise<string> {
         const fileUri = vscode.Uri.file(uri.path.replace('.metadata', ''));
+        const fileName = fileUri.fsPath.split('\\').pop() || fileUri.fsPath.split('/').pop() || 'Unknown';
 
         try {
             const metadata = await this.exifTool.read(fileUri.fsPath);
@@ -68,8 +70,8 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
             });
             return metadataEntries.join('\n');
         } catch (err) {
-            outputChannel.appendLine(`Failed to read the image metadata: ${(err as Error).message}`);
-            return `Failed to read the image metadata: ${(err as Error).message}`;
+            outputChannel.appendLine(`Failed to read the image metadata for ${fileName}: ${(err as Error).message}`);
+            return `Failed to read the image metadata for ${fileName}: ${(err as Error).message}`;
         }
     }
 
