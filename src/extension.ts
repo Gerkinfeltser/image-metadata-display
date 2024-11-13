@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { ExifTool } from 'exiftool-vendored';
 
 export function activate(context: vscode.ExtensionContext) {
+    vscode.window.showInformationMessage('Image Metadata Extension is now active!');
     const metadataProvider = new MetadataProvider();
     const scheme = 'image-metadata'; // Generalized scheme name
     context.subscriptions.push(vscode.workspace.registerTextDocumentContentProvider(scheme, metadataProvider));
@@ -35,6 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 async function showMetadata(fileUri: vscode.Uri, viewColumn: vscode.ViewColumn) {
+    vscode.window.showInformationMessage('Showing image metadata...');
     const scheme = 'image-metadata'; // Generalized scheme name
     if (fileUri.fsPath.toLowerCase().endsWith('.png') || fileUri.fsPath.toLowerCase().endsWith('.webp') || fileUri.fsPath.toLowerCase().endsWith('.jpg')) { // Check for JPEG, PNG, and WebP
         const metadataUri = vscode.Uri.parse(`${scheme}:${fileUri.fsPath}.metadata`);
@@ -79,5 +81,6 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
 }
 
 export function deactivate() {
+    vscode.window.showInformationMessage('Image Metadata Extension is now deactivated.');
     new ExifTool().end();
 }
