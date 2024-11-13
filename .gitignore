@@ -1,3 +1,7 @@
+image-metadata-inspector-*.vsix
+.aider*
+.env
+
 # Ignore the node_modules directory
 node_modules/
 

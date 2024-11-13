@@ -27,6 +27,7 @@ exports.deactivate = exports.activate = void 0;
 const vscode = __importStar(require("vscode"));
 const exiftool_vendored_1 = require("exiftool-vendored");
 function activate(context) {
+    vscode.window.showInformationMessage('Image Metadata Extension is now active!');
     const metadataProvider = new MetadataProvider();
     const scheme = 'image-metadata'; // Generalized scheme name
     context.subscriptions.push(vscode.workspace.registerTextDocumentContentProvider(scheme, metadataProvider));
@@ -59,6 +60,7 @@ function activate(context) {
 }
 exports.activate = activate;
 async function showMetadata(fileUri, viewColumn) {
+    vscode.window.showInformationMessage('Showing image metadata...');
     const scheme = 'image-metadata'; // Generalized scheme name
     if (fileUri.fsPath.toLowerCase().endsWith('.png') || fileUri.fsPath.toLowerCase().endsWith('.webp') || fileUri.fsPath.toLowerCase().endsWith('.jpg')) { // Check for JPEG, PNG, and WebP
         const metadataUri = vscode.Uri.parse(`${scheme}:${fileUri.fsPath}.metadata`);
@@ -101,6 +103,7 @@ class MetadataProvider {
     }
 }
 function deactivate() {
+    vscode.window.showInformationMessage('Image Metadata Extension is now deactivated.');
     new exiftool_vendored_1.ExifTool().end();
 }
 exports.deactivate = deactivate;
