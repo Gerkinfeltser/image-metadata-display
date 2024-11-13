@@ -2,6 +2,12 @@
 .vscode/
 .vscode-test/
 .vsc-extension-quickstart.md
+.vscode-test.mjs
+
+# Exclude test files from the `out` directory
+out/test/
+out/**/*.test.js  # Explicitly exclude test JS files in out
+
 .gitignore
 .yarnrc
 
@@ -17,9 +23,6 @@ src/**/*.ts
 .aider*
 .aider.tags.cache.v3/
 **/.aider/**
-
-# Exclude node_modules
-node_modules/
 
 # Exclude any other unnecessary files
 *.log
