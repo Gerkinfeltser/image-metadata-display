@@ -1,39 +1,26 @@
 {
     "version": "0.2.0",
     "configurations": [
-      {
-        "name": "Run Extension",
-        "type": "extensionHost",
-        "request": "launch",
-        "args": [
-          "--extensionDevelopmentPath=${workspaceFolder}"
-        ],
-        "outFiles": ["${workspaceFolder}/out/**/*.js"],
-        "preLaunchTask": "npm: watch",
-        "runtimeExecutable": "${execPath}",
-        "sourceMaps": true,
-        "internalConsoleOptions": "neverOpen"
-      },
-      {
-        "name": "Extension Tests",
-        "type": "extensionHost",
-        "request": "launch",
-        "args": [
-          "--extensionDevelopmentPath=${workspaceFolder}",
-          "--extensionTestsPath=${workspaceFolder}/out/test/suite/index"
-        ],
-        "outFiles": ["${workspaceFolder}/out/test/**/*.js"],
-        "preLaunchTask": "npm: watch",
-        "runtimeExecutable": "${execPath}",
-        "sourceMaps": true,
-        "internalConsoleOptions": "neverOpen"
-      }
-    ],
-    "compounds": [
-      {
-        "name": "Run Extension & Tests",
-        "configurations": ["Run Extension", "Extension Tests"]
-      }
+        {
+            "name": "Run Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "outFiles": ["${workspaceFolder}/out/**/*.js"],
+            "preLaunchTask": "npm: compile",
+            "sourceMaps": true
+        },
+        {
+            "name": "Run Extension (No Compile)",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "outFiles": ["${workspaceFolder}/out/**/*.js"],
+            "sourceMaps": true
+        }
     ]
-  }
-  
+}
