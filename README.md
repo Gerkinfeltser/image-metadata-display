@@ -1,82 +1,116 @@
-# Image Metadata Display Extension for VSCode
+# Image Metadata Inspector for VS Code
 
-This extension for Visual Studio Code allows users to view metadata of PNG, JPG, and WEBP images directly within the editor. With a simple command, you can inspect the embedded metadata of any image file in your workspace (and beyond via command palette). It was originally created for easily inspecting [ComfyUI](https://github.com/comfyanonymous/ComfyUI) images' metadata from within VSCode. Special thanks to ChatGPT for all the assistance.
+This extension for Visual Studio Code allows users to view metadata of PNG, JPG, JPEG, and WebP images directly within the editor. With a simple command, you can inspect the embedded metadata of any image file in your workspace (and beyond via command palette). It was originally created for easily inspecting [ComfyUI](https://github.com/comfyanonymous/ComfyUI) images' metadata from within VS Code.
 
 !["Inspect JPG, PNG & WEBP Metadata via explorer right-click"](images/explorer_example.jpg)
 
 ## Features
 
-- **Inspect JPG, PNG & WEBP Metadata** - Opens a read-only document next to the image that displays the image file's metadata.
-- **Prettified JSON Metadata** - If the metadata contains JSON strings, they are displayed in a prettified format for better readability.
-- **Output Console Messages** - Debug and informational messages are logged to the VS Code Output console for better troubleshooting and visibility.
+- **Cross-Platform Support** - Works on Windows, macOS, and Linux with automatic ExifTool detection
+- **Multiple Image Formats** - Supports JPG, JPEG, PNG, and WebP images
+- **ComfyUI Workflow Support** - Perfect for inspecting ComfyUI generated images and their embedded workflows
+- **Prettified JSON Metadata** - JSON strings in metadata are displayed in a prettified format for better readability
+- **Smart Error Handling** - Clear error messages and fallback mechanisms for different platforms
+- **Comprehensive Logging** - Debug and informational messages logged to VS Code Output console
 
-## Installation from VSIX
+## Installation
 
-To manually install:
-1. Download the `.vsix` file from the latest [release](https://github.com/Gerkinfeltser/image-metadata-display/releases).
-2. In VS Code, go to **Extensions** > **...** > **Install from VSIX...**, and select the downloaded file.
+### From VS Code Marketplace (Recommended)
+1. Open VS Code
+2. Go to Extensions (Ctrl+Shift+X)
+3. Search for "Image Metadata Inspector"
+4. Click Install
+
+### From VSIX File
+1. Download the `.vsix` file from the latest [release](https://github.com/Gerkinfeltser/image-metadata-display/releases)
+2. In VS Code, go to **Extensions** > **...** > **Install from VSIX...**
+3. Select the downloaded file
 
 ## Usage
 
-To view the metadata of an image file, you have several options:
+### Multiple Ways to Inspect Metadata:
 
-1. **Right-click on an image file within the Explorer pane**:
-   - Right-click on the image file and select "Inspect Image Metadata".
-2. **Right-click on the title bar of an open image preview**:
-   - Right-click on the title bar of the open image preview and select "Inspect Image Metadata".
-3. **Use the "Inspect Image Metadata" command from the Command Palette**:
-   - Open the Command Palette by pressing `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS).
-   - Type "Inspect Image Metadata" and select it.
-   - A dialogue box will open to select the image you'd like to inspect.
+1. **Right-click on an image file in Explorer**:
+   - Right-click on any supported image file and select "Inspect Image Metadata"
 
-## Viewing Output Console Messages
+2. **Right-click on an open image tab**:
+   - Right-click on the title bar of an open image preview and select "Inspect Image Metadata"
 
-To view the debug and informational messages logged by the extension:
+3. **Command Palette**:
+   - Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS)
+   - Type "Inspect Image Metadata" and select it
+   - Choose an image file from the dialog
 
-1. Open the Output panel in VS Code by selecting `View` > `Output` or using the shortcut `Ctrl+Shift+U` (Windows/Linux) or `Cmd+Shift+U` (macOS).
-2. Select the `Image Metadata Extension` channel from the dropdown menu.
-3. Run your extension and perform actions to trigger the debug messages.
+## Cross-Platform Support
 
-## Requirements
+- **Windows**: Uses bundled ExifTool executable
+- **macOS**: Falls back to native ExifTool (install with: `brew install exiftool`)
+- **Linux**: Falls back to native ExifTool (install via package manager)
 
-- Visual Studio Code version 1.87.0 or higher.
+The extension automatically detects your platform and uses the best available method.
 
-## Extension Settings
+## Viewing Output Logs
 
-This extension contributes the following command:
-- `extension.inspectImageMetadata`: Inspect Image Metadata
+To view detailed logs and troubleshoot issues:
 
-## Known Issues/Future Work
+1. Open the Output panel: `View` > `Output` or `Ctrl+Shift+U`
+2. Select "Image Metadata Extension" from the dropdown
+3. View initialization and operation logs
 
-- Extracting the workflow JSON portion to its own JSON file does not seem to create a working workflow in Comfyui. Maybe *someday*...
-- So far this has only been tested on Windows (10) VS Code. Your mileage on other platforms may vary.
+## System Requirements
+
+- Visual Studio Code version 1.87.0 or higher
+- For macOS/Linux: ExifTool installed system-wide (optional, but recommended)
+
+## Supported File Types
+
+- `.jpg` - JPEG images
+- `.jpeg` - JPEG images  
+- `.png` - PNG images
+- `.webp` - WebP images
+
+## Perfect for ComfyUI Users
+
+This extension was originally designed for ComfyUI users who want to:
+- Inspect workflow metadata embedded in generated images
+- View generation parameters and settings
+- Debug workflow configurations
+- Extract prompt information from images
+
+## Known Issues
+
+- Workflow JSON extraction to separate files doesn't create working ComfyUI workflows (planned feature)
+- Some ExifTool features may require native installation on macOS/Linux
 
 ## Contributing
 
-We welcome contributions to the Image Metadata Display extension. To contribute, please follow these steps:
+Contributions are welcome! Please see our [GitHub repository](https://github.com/Gerkinfeltser/image-metadata-display) for:
 
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them.
-4. Push your changes to your fork.
-5. Open a pull request to the main repository.
+1. **Reporting Issues**: Use GitHub Issues for bug reports and feature requests
+2. **Contributing Code**: Fork, create a feature branch, and submit a pull request
+3. **Documentation**: Help improve documentation and examples
 
-### Build Instructions
+### Development Setup
 
-To build the extension, follow these steps:
+```bash
+git clone https://github.com/Gerkinfeltser/image-metadata-display.git
+cd image-metadata-display
+npm install
+npm run compile
+```
 
-1. **Clone the repository**:
-   - Clone the repository to your local machine.
-2. **Install dependencies**:
-   - Run `npm install` to install the necessary dependencies.
-3. **Build the extension**:
-   - Run `npm run build` to build the extension. This will generate the contents of the `\out` directory.
+Then press F5 in VS Code to test the extension.
 
 ## Acknowledgments
 
-- [ExifTool](https://exiftool.org/) - Used for reading image metadata.
-- [vscode](https://code.visualstudio.com/) - Visual Studio Code editor.
-- [ComfyUI](https://github.com/comfyanonymous/ComfyUI) - Node based Image/Everything Generator
+- [ExifTool](https://exiftool.org/) - The powerful metadata extraction tool
+- [exiftool-vendored](https://www.npmjs.com/package/exiftool-vendored) - Node.js wrapper for ExifTool
+- [VS Code Extension API](https://code.visualstudio.com/api) - Microsoft's extension framework
+- [ComfyUI](https://github.com/comfyanonymous/ComfyUI) - The amazing node-based AI image generator
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
 
 ## Changelog
 
