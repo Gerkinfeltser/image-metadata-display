@@ -1,6 +1,6 @@
 # Change Log
 
-## [0.0.6] - 2025-01-XX
+## [0.0.6] - 2025-09-19
 
 ### Added
 - **Cross-platform support**: Extension now works on macOS and Linux with native ExifTool fallback
