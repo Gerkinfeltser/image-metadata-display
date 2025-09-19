@@ -3,24 +3,28 @@
 ## [0.1.0] - 2025-09-19
 
 ### Added
-- **Cross-platform support**: Extension now works on macOS and Linux with native ExifTool fallback
+- **Enhanced cross-platform support**: Improved compatibility for macOS and Linux with native ExifTool fallback
 - **JPEG file support**: Added support for .jpeg file extension
-- **Enhanced error handling**: Improved error messages and user notifications
-- **Platform detection**: Better debugging with platform and version information
+- **Better error handling**: Clear error messages and platform-specific guidance
+- **Platform detection**: Detailed debugging information showing platform and version details
 - **Marketplace metadata**: Added keywords, license, and publisher information for VS Code Marketplace
 - **Packaging support**: Added vsce scripts for marketplace publishing
 
 ### Changed
-- **Improved initialization**: Better ExifTool initialization with fallback mechanisms
-- **Enhanced logging**: More detailed output messages for troubleshooting
+- **Improved initialization**: Better ExifTool initialization with graceful fallback mechanisms
+- **Enhanced logging**: More detailed output messages for troubleshooting cross-platform issues
 - **Updated dependencies**: Cross-platform compatible dependency configuration
 - **Professional documentation**: Comprehensive README and installation instructions
 
 ### Fixed
 - **Launch configuration**: Fixed VS Code development environment setup
 - **Extension activation**: Improved extension loading and error recovery
-- **Cross-platform compatibility**: Resolved Windows-only limitation
+- **Windows-only limitation**: Added fallback support for other platforms (testing needed)
 - **Node.js compatibility**: Updated packaging for modern Node.js versions
+
+### Notes
+- Cross-platform improvements are in place but need community testing on macOS/Linux
+- Please report any issues on non-Windows platforms via GitHub Issues
 
 ## [0.0.5] - 2023-11-13
 
