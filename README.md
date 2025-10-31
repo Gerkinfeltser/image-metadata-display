@@ -44,10 +44,12 @@ This extension for Visual Studio Code allows users to view metadata of PNG, JPG,
 ## Cross-Platform Support
 
 - **Windows**: ✅ Fully supported with bundled ExifTool executable
-- **macOS**: ⚠️ Improved support with native ExifTool fallback (install with: `brew install exiftool`)
-- **Linux**: ⚠️ Improved support with native ExifTool fallback (install via package manager)
+- **macOS**: ✅ Requires ExifTool installed via Homebrew: `brew install exiftool`
+- **Linux**: ✅ Requires ExifTool installed via your package manager (e.g., `apt install exiftool`, `dnf install perl-Image-ExifTool`)
 
-The extension automatically detects your platform and uses the best available method. **Note**: macOS and Linux support has been significantly improved but needs community testing. Please report any issues via GitHub Issues.
+The extension automatically detects your platform and uses the best available method:
+1. First attempts to use the bundled ExifTool (Windows)
+2. Falls back to system-installed ExifTool if bundled version is unavailable (macOS/Linux)
 
 ## Viewing Output Logs
 
@@ -60,7 +62,8 @@ To view detailed logs and troubleshoot issues:
 ## System Requirements
 
 - Visual Studio Code version 1.87.0 or higher
-- For macOS/Linux: ExifTool installed system-wide (optional, but recommended)
+- **For macOS**: ExifTool must be installed via Homebrew (`brew install exiftool`)
+- **For Linux**: ExifTool must be installed via your package manager
 
 ## Supported File Types
 
@@ -80,7 +83,7 @@ This extension was originally designed for ComfyUI users who want to:
 ## Known Issues
 
 - Workflow JSON extraction to separate files doesn't create working ComfyUI workflows (planned feature)
-- Some ExifTool features may require native installation on macOS/Linux
+- macOS/Linux users must have ExifTool installed system-wide for the extension to function
 
 ## Contributing
 

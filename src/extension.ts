@@ -1,11 +1,25 @@
 import * as vscode from 'vscode';
-import { ExifTool } from 'exiftool-vendored';
 import * as os from 'os';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 
 const execAsync = promisify(exec);
 const outputChannel = vscode.window.createOutputChannel('Image Metadata Extension');
+
+// Lazy-load ExifTool to avoid import failures crashing the extension
+let ExifToolClass: any = null;
+async function loadExifToolClass() {
+    if (!ExifToolClass) {
+        try {
+            const module = await import('exiftool-vendored');
+            ExifToolClass = module.ExifTool;
+        } catch (error) {
+            outputChannel.appendLine(`Failed to import exiftool-vendored: ${error instanceof Error ? error.message : String(error)}`);
+            throw error;
+        }
+    }
+    return ExifToolClass;
+}
 
 export function activate(context: vscode.ExtensionContext) {
     console.log("Debug: Image Metadata Extension is now active.");
@@ -83,7 +97,7 @@ async function showMetadata(fileUri: vscode.Uri, viewColumn: vscode.ViewColumn) 
 }
 
 class MetadataProvider implements vscode.TextDocumentContentProvider {
-    private exifTool: ExifTool | null = null;
+    private exifTool: any = null;
     private useNativeExifTool: boolean = false;
     private initializationAttempted: boolean = false;
     private initializationError: string | null = null;
@@ -102,6 +116,7 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
         
         try {
             // Try to initialize with exiftool-vendored first
+            const ExifTool = await loadExifToolClass();
             this.exifTool = new ExifTool();
             outputChannel.appendLine('ExifTool (vendored) initialized successfully');
             return;
@@ -223,7 +238,7 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
 
     dispose() {
         if (this.exifTool) {
-            this.exifTool.end().catch(error => {
+            this.exifTool.end().catch((error: Error) => {
                 console.error('Error disposing ExifTool:', error);
             });
         }
