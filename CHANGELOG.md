@@ -5,6 +5,17 @@ All notable changes to the "Image Metadata Inspector" extension will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2025-11-17
+
+### Fixed
+- Fixed race condition causing "No ExifTool available" error on the first image opened after VS Code reload (Issue #3)
+- Fixed cached error results preventing the first image from working even after reopening it
+- Improved async initialization handling to ensure ExifTool is ready before processing metadata requests
+
+### Changed
+- Replaced boolean initialization flag with Promise-based state management for better async control
+- Enhanced initialization retry logic to properly clear errors after successful initialization
+
 ## [0.1.1] - 2025-10-31
 
 ### Fixed

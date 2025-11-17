@@ -99,18 +99,19 @@ async function showMetadata(fileUri: vscode.Uri, viewColumn: vscode.ViewColumn) 
 class MetadataProvider implements vscode.TextDocumentContentProvider {
     private exifTool: any = null;
     private useNativeExifTool: boolean = false;
-    private initializationAttempted: boolean = false;
+    private initializationPromise: Promise<void> | null = null;
     private initializationError: string | null = null;
 
     constructor() {
-        this.initializeExifTool();
+        // Start initialization but don't wait for it
+        this.initializationPromise = this.initializeExifTool();
     }
 
     private async initializeExifTool() {
-        if (this.initializationAttempted) {
+        if (this.exifTool || this.useNativeExifTool) {
+            // Already initialized successfully
             return;
         }
-        this.initializationAttempted = true;
 
         outputChannel.appendLine('Attempting to initialize ExifTool...');
         
@@ -118,6 +119,7 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
             // Try to initialize with exiftool-vendored first
             const ExifTool = await loadExifToolClass();
             this.exifTool = new ExifTool();
+            this.initializationError = null; // Clear any previous errors
             outputChannel.appendLine('ExifTool (vendored) initialized successfully');
             return;
         } catch (error) {
@@ -129,6 +131,7 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
             try {
                 await execAsync('exiftool -ver');
                 this.useNativeExifTool = true;
+                this.initializationError = null; // Clear any previous errors
                 outputChannel.appendLine('Native ExifTool found and will be used as fallback');
                 return;
             } catch (nativeError) {
@@ -163,9 +166,9 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
         const fileUri = vscode.Uri.file(uri.path.replace('.metadata', ''));
         const fileName = fileUri.fsPath.split('\\').pop() || fileUri.fsPath.split('/').pop() || 'Unknown';
 
-        // Wait for initialization to complete if it's still ongoing
-        if (!this.initializationAttempted) {
-            await this.initializeExifTool();
+        // Wait for initialization to complete
+        if (this.initializationPromise) {
+            await this.initializationPromise;
         }
 
         const platformInfo = `Platform: ${os.platform()} ${os.arch()}\nNode.js: ${process.version}\nVS Code: ${vscode.version}`;
