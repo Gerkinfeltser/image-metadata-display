@@ -45,7 +45,7 @@ This extension for Visual Studio Code allows users to view metadata of PNG, JPG,
 
 - **Windows**: ✅ Fully supported with bundled ExifTool executable
 - **macOS**: ✅ Requires ExifTool installed via Homebrew: `brew install exiftool`
-- **Linux**: ✅ Requires ExifTool installed via your package manager (e.g., `apt install exiftool`, `dnf install perl-Image-ExifTool`)
+- **Linux**: ✅ Requires ExifTool installed via your package manager (e.g., `sudo apt install libimage-exiftool-perl` for Ubuntu/Debian, `sudo dnf install perl-Image-ExifTool` for Fedora)
 
 The extension automatically detects your platform and uses the best available method:
 1. First attempts to use the bundled ExifTool (Windows)
@@ -63,7 +63,10 @@ To view detailed logs and troubleshoot issues:
 
 - Visual Studio Code version 1.87.0 or higher
 - **For macOS**: ExifTool must be installed via Homebrew (`brew install exiftool`)
-- **For Linux**: ExifTool must be installed via your package manager
+- **For Linux**: ExifTool must be installed via your package manager:
+  - Ubuntu/Debian: `sudo apt install libimage-exiftool-perl`
+  - Fedora/CentOS: `sudo dnf install perl-Image-ExifTool`
+  - Arch Linux: `sudo pacman -S perl-image-exiftool`
 
 ## Supported File Types
 
@@ -84,6 +87,50 @@ This extension was originally designed for ComfyUI users who want to:
 
 - Workflow JSON extraction to separate files doesn't create working ComfyUI workflows (planned feature)
 - macOS/Linux users must have ExifTool installed system-wide for the extension to function
+
+## Troubleshooting
+
+### Linux: "Cannot find module 'exiftool-vendored.pl'" Error
+
+If you encounter this error on Linux:
+
+```
+Platform compatibility issue: Failed to initialize vendored ExifTool: Cannot find module 'exiftool-vendored.pl'
+```
+
+**Solution:** Install ExifTool using your distribution's package manager:
+
+```bash
+# Ubuntu/Debian:
+sudo apt install libimage-exiftool-perl
+
+# Fedora/CentOS:
+sudo dnf install perl-Image-ExifTool
+
+# Arch Linux:
+sudo pacman -S perl-image-exiftool
+```
+
+After installation, restart VS Code for the extension to detect ExifTool properly.
+
+### Verifying ExifTool Installation
+
+To verify ExifTool is installed correctly:
+
+```bash
+exiftool -ver
+```
+
+This should return the ExifTool version number (e.g., "12.50").
+
+### Extension Still Not Working
+
+If the extension still fails after installing ExifTool:
+
+1. Open VS Code Output panel (`View` > `Output`)
+2. Select "Image Metadata Extension" from dropdown
+3. Check for additional error messages
+4. Try reloading VS Code (`Ctrl+Shift+P` > "Developer: Reload Window")
 
 ## Contributing
 
