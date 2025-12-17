@@ -14,21 +14,19 @@ npm run package   # Create .vsix file
 **Debug**: Press `F5` to launch Extension Development Host
 
 ## Architecture
-...
-```
 
-Alternatively, if you want it specifically near the packaging commands where version changes would happen:
+- **Extension Entry**: `src/extension.ts` - Main extension logic with ExifTool initialization
+- **ExifTool Loading**: Lazy-loaded with fallback to system-installed ExifTool
+- **Cross-Platform Binaries**: Bundled in `node_modules/exiftool-vendored.exe` (Windows) and `node_modules/exiftool-vendored.pl` (macOS/Linux)
 
-```markdown
-## Quick Commands
+## Future Improvements
 
-```bash
-npm run compile    # Build TypeScript → out/
-npm run watch      # Auto-rebuild on changes
-npm test          # Run extension tests
-npm run package   # Create .vsix file
-```
+### Performance Optimization
+- [ ] **Bundle extension with webpack/esbuild** to reduce file count (currently 1245 files, 21MB)
+  - Challenge: Complex with native ExifTool binaries - requires careful configuration
+  - Research best approach for bundling with platform-specific native executables
+  - See: https://aka.ms/vscode-bundle-extension
+  - Note: Current size is acceptable but could improve load performance
 
-⚠️ **CRITICAL**: DO NOT iterate version number in `package.json` until expressly told
-
-**Debug**: Press `F5` to launch Extension Development Host
+### Additional Features
+- [ ] Workflow JSON extraction to separate files (for ComfyUI workflows)

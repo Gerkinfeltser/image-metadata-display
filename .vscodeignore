@@ -28,3 +28,10 @@ src/**/*.ts
 *.log
 .DS_Store
 Thumbs.db
+
+# Exclude test files from root
+test-*.js
+
+# TODO: Consider bundling with webpack/esbuild to reduce file count (1245 files)
+# See: https://aka.ms/vscode-bundle-extension
+# Note: Complex with native ExifTool binaries - future enhancement
