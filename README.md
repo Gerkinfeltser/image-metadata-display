@@ -15,16 +15,14 @@ This extension for Visual Studio Code allows users to view metadata of PNG, JPG,
 
 ## Installation
 
-### From VS Code Marketplace (Recommended)
 1. Open VS Code
 2. Go to Extensions (Ctrl+Shift+X)
 3. Search for "Image Metadata Inspector"
 4. Click Install
 
-### From VSIX File
-1. Download the `.vsix` file from the latest [release](https://github.com/Gerkinfeltser/image-metadata-display/releases)
-2. In VS Code, go to **Extensions** > **...** > **Install from VSIX...**
-3. Select the downloaded file
+That's it! ExifTool is now bundled with the extension for all platforms - no additional setup required.
+
+> **Note for macOS/Linux users**: Sorry about the ~20MB download size! The extension bundles ExifTool binaries for all platforms to ensure it works out of the box everywhere. Your patience with the extra bytes is appreciated. 🙏
 
 ## Usage
 
@@ -44,12 +42,10 @@ This extension for Visual Studio Code allows users to view metadata of PNG, JPG,
 ## Cross-Platform Support
 
 - **Windows**: ✅ Fully supported with bundled ExifTool executable
-- **macOS**: ✅ Requires ExifTool installed via Homebrew: `brew install exiftool`
-- **Linux**: ✅ Requires ExifTool installed via your package manager (e.g., `sudo apt install libimage-exiftool-perl` for Ubuntu/Debian, `sudo dnf install perl-Image-ExifTool` for Fedora)
+- **macOS**: ✅ Fully supported with bundled ExifTool executable
+- **Linux**: ✅ Fully supported with bundled ExifTool executable
 
-The extension automatically detects your platform and uses the best available method:
-1. First attempts to use the bundled ExifTool (Windows)
-2. Falls back to system-installed ExifTool if bundled version is unavailable (macOS/Linux)
+The extension automatically detects your platform and uses the bundled ExifTool binary. As a fallback, it can also use system-installed ExifTool if available.
 
 ## Viewing Output Logs
 
@@ -62,11 +58,8 @@ To view detailed logs and troubleshoot issues:
 ## System Requirements
 
 - Visual Studio Code version 1.87.0 or higher
-- **For macOS**: ExifTool must be installed via Homebrew (`brew install exiftool`)
-- **For Linux**: ExifTool must be installed via your package manager:
-  - Ubuntu/Debian: `sudo apt install libimage-exiftool-perl`
-  - Fedora/CentOS: `sudo dnf install perl-Image-ExifTool`
-  - Arch Linux: `sudo pacman -S perl-image-exiftool`
+
+That's it! ExifTool is bundled with the extension.
 
 ## Supported File Types
 
@@ -86,51 +79,43 @@ This extension was originally designed for ComfyUI users who want to:
 ## Known Issues
 
 - Workflow JSON extraction to separate files doesn't create working ComfyUI workflows (planned feature)
-- macOS/Linux users must have ExifTool installed system-wide for the extension to function
 
 ## Troubleshooting
 
-### Linux: "Cannot find module 'exiftool-vendored.pl'" Error
+### Extension Not Working
 
-If you encounter this error on Linux:
+ExifTool is bundled with the extension and should work out of the box on all platforms. If you encounter issues:
 
-```
-Platform compatibility issue: Failed to initialize vendored ExifTool: Cannot find module 'exiftool-vendored.pl'
-```
+1. **Check Output Logs**:
+   - Open VS Code Output panel (`View` > `Output`)
+   - Select "Image Metadata Extension" from dropdown
+   - Check for error messages
 
-**Solution:** Install ExifTool using your distribution's package manager:
+2. **Reload VS Code**:
+   - Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS)
+   - Type "Developer: Reload Window" and press Enter
 
-```bash
-# Ubuntu/Debian:
-sudo apt install libimage-exiftool-perl
+3. **Optional Fallback - System ExifTool** (advanced users only):
+   - If the bundled ExifTool fails, you can optionally install ExifTool system-wide as a fallback
+   - The extension will automatically detect and use system-installed ExifTool if the bundled version fails
 
-# Fedora/CentOS:
-sudo dnf install perl-Image-ExifTool
+   ```bash
+   # macOS:
+   brew install exiftool
 
-# Arch Linux:
-sudo pacman -S perl-image-exiftool
-```
+   # Ubuntu/Debian:
+   sudo apt install libimage-exiftool-perl
 
-After installation, restart VS Code for the extension to detect ExifTool properly.
+   # Fedora/CentOS:
+   sudo dnf install perl-Image-ExifTool
 
-### Verifying ExifTool Installation
+   # Arch Linux:
+   sudo pacman -S perl-image-exiftool
+   ```
 
-To verify ExifTool is installed correctly:
-
-```bash
-exiftool -ver
-```
-
-This should return the ExifTool version number (e.g., "12.50").
-
-### Extension Still Not Working
-
-If the extension still fails after installing ExifTool:
-
-1. Open VS Code Output panel (`View` > `Output`)
-2. Select "Image Metadata Extension" from dropdown
-3. Check for additional error messages
-4. Try reloading VS Code (`Ctrl+Shift+P` > "Developer: Reload Window")
+4. **Still Having Issues?**:
+   - Please report the issue on [GitHub](https://github.com/Gerkinfeltser/image-metadata-display/issues)
+   - Include the output logs from step 1
 
 ## Contributing
 
