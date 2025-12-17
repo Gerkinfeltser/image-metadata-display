@@ -10,12 +10,26 @@ const outputChannel = vscode.window.createOutputChannel('Image Metadata Extensio
 let ExifToolClass: any = null;
 async function loadExifToolClass() {
     if (!ExifToolClass) {
+        outputChannel.appendLine('Attempting to load ExifTool class...');
         try {
-            const module = await import('exiftool-vendored');
-            ExifToolClass = module.ExifTool;
-        } catch (error) {
-            outputChannel.appendLine(`Failed to import exiftool-vendored: ${error instanceof Error ? error.message : String(error)}`);
-            throw error;
+            // Try CommonJS require first (more compatible with VS Code sandbox)
+            outputChannel.appendLine('Trying CommonJS require approach...');
+            const exiftoolVendored = require('exiftool-vendored');
+            ExifToolClass = exiftoolVendored.ExifTool;
+            outputChannel.appendLine('✓ Successfully loaded ExifTool class via CommonJS require');
+        } catch (requireError) {
+            outputChannel.appendLine(`✗ CommonJS require failed: ${requireError instanceof Error ? requireError.message : String(requireError)}`);
+
+            // Fall back to dynamic ES Module import
+            outputChannel.appendLine('Falling back to dynamic ES Module import...');
+            try {
+                const module = await import('exiftool-vendored');
+                ExifToolClass = module.ExifTool;
+                outputChannel.appendLine('✓ Successfully loaded ExifTool class via dynamic import');
+            } catch (importError) {
+                outputChannel.appendLine(`✗ Dynamic import also failed: ${importError instanceof Error ? importError.message : String(importError)}`);
+                throw importError;
+            }
         }
     }
     return ExifToolClass;
