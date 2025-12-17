@@ -5,6 +5,17 @@ All notable changes to the "Image Metadata Inspector" extension will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - 2025-12-17
+
+### Fixed
+- Fixed Windows installation failing with "Cannot find module 'exiftool-vendored.exe'" error (Issue #5)
+- Extension now properly bundles platform-specific ExifTool binaries for Windows, macOS, and Linux
+- Windows binary (exiftool.exe) is now included in the packaged extension
+
+### Changed
+- Added exiftool-vendored.exe and exiftool-vendored.pl as explicit dependencies to ensure proper bundling
+- Improved packaging configuration to include platform-specific binaries in all extension distributions
+
 ## [0.1.3] - 2025-12-04
 
 ### Fixed
@@ -69,6 +80,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Command palette support
 - JSON prettification for metadata display
 
+[0.1.4]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.0...v0.1.1

@@ -76,6 +76,12 @@
   },
   "dependencies": {
     "exiftool-vendored": "^24.6.0",
+    "exiftool-vendored.exe": "^13.44.0",
+    "exiftool-vendored.pl": "^13.44.0",
     "jws": "^3.2.3"
+  },
+  "optionalDependencies": {
+    "exiftool-vendored.exe": "^13.44.0",
+    "exiftool-vendored.pl": "^13.44.0"
   }
 }
