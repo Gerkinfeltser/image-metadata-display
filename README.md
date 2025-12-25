@@ -22,6 +22,8 @@ This extension for Visual Studio Code allows users to view metadata of PNG, JPG,
 
 That's it! ExifTool is now bundled with the extension for all platforms - no additional setup required.
 
+**Updates**: This extension is distributed exclusively through VS Code Marketplace. All future updates will be delivered automatically through the VS Code extension updater.
+
 > **Note for macOS/Linux users**: Sorry about the ~20MB download size! The extension bundles ExifTool binaries for all platforms to ensure it works out of the box everywhere. Your patience with the extra bytes is appreciated. 🙏
 
 ## Usage
