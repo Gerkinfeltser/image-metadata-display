@@ -5,6 +5,12 @@ All notable changes to the "Image Metadata Inspector" extension will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.5] - 2026-01-01
+
+### Fixed
+- **Security:** Fixed qs DoS vulnerability (GHSA-6rw7-vpxm-498p) by upgrading from 6.14.0 to 6.14.1
+- Updated dependency chain: @vscode/vsce → typed-rest-client → qs
+
 ## [0.1.4] - 2025-12-17
 
 ### Fixed
@@ -80,6 +86,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Command palette support
 - JSON prettification for metadata display
 
+[0.1.5]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.1...v0.1.2

@@ -23,3 +23,7 @@ Thumbs.db
 # Ignore VS Code-specific and helper files
 .vscode/
 .vscode-test/
+
+# Claude Code
+.mcp.json
+settings.local.json
