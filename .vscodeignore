@@ -24,6 +24,10 @@ src/**/*.ts
 .aider.tags.cache.v3/
 **/.aider/**
 
+# Exclude Claude-related project files
+.claude/
+CLAUDE.md
+
 # Exclude any other unnecessary files
 *.log
 .DS_Store
@@ -31,6 +35,16 @@ Thumbs.db
 
 # Exclude test files from root
 test-*.js
+
+# Exclude unnecessary files from node_modules dependencies
+node_modules/**/*.md
+node_modules/**/*.txt
+node_modules/**/README*
+node_modules/**/LICENSE*
+node_modules/**/CHANGELOG*
+node_modules/**/*.d.ts
+node_modules/**/*.test.js
+node_modules/**/*.spec.js
 
 # TODO: Consider bundling with webpack/esbuild to reduce file count (1245 files)
 # See: https://aka.ms/vscode-bundle-extension
