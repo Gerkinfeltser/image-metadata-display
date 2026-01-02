@@ -5,6 +5,15 @@ All notable changes to the "Image Metadata Inspector" extension will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.6] - 2026-01-01
+
+### Changed
+- **Performance:** Reduced package size by excluding unnecessary files from dependencies
+- Removed README, LICENSE, CHANGELOG, and TypeScript .d.ts files from node_modules
+- Excluded .claude/ directory and CLAUDE.md from extension package
+- Package reduced from 1,243 to 1,105 files (138 fewer files)
+- All runtime code and ExifTool binaries remain intact
+
 ## [0.1.5] - 2026-01-01
 
 ### Fixed
@@ -86,6 +95,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Command palette support
 - JSON prettification for metadata display
 
+[0.1.6]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/Gerkinfeltser/image-metadata-display/compare/v0.1.2...v0.1.3
