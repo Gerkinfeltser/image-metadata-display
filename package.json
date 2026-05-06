@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/Gerkinfeltser/image-metadata-display.git"
   },
-  "version": "0.1.8",
+  "version": "0.2.0",
   "publisher": "Gerkinfeltser",
   "icon": "images/image_metadata_viewer_icon.png",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "jpeg"
   ],
   "engines": {
-    "vscode": "^1.87.0"
+    "vscode": "^1.89.0"
   },
   "categories": [
     "Other"
@@ -68,18 +68,18 @@
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
-    "@types/node": "^18.0.0",
+    "@types/node": "^20.0.0",
     "@types/vscode": "^1.87.2",
     "@vscode/test-electron": "^2.3.9",
     "@vscode/vsce": "^3.7.1",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "exiftool-vendored": "^24.6.0",
+    "exiftool-vendored": "^35.19.0",
     "jws": "^3.2.3"
   },
   "optionalDependencies": {
-    "exiftool-vendored.exe": "^13.44.0",
-    "exiftool-vendored.pl": "^13.44.0"
+    "exiftool-vendored.exe": "^13.53.0",
+    "exiftool-vendored.pl": "^13.53.0"
   }
 }

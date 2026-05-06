@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
 import * as os from 'os';
-import { exec } from 'child_process';
+import { execFile } from 'child_process';
 import { promisify } from 'util';
 
-const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
 const outputChannel = vscode.window.createOutputChannel('Image Metadata Extension');
 
 // Lazy-load ExifTool to avoid import failures crashing the extension
@@ -143,7 +143,7 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
             
             // Fall back to native exiftool
             try {
-                await execAsync('exiftool -ver');
+                await execFileAsync('exiftool', ['-ver']);
                 this.useNativeExifTool = true;
                 this.initializationError = null; // Clear any previous errors
                 outputChannel.appendLine('Native ExifTool found and will be used as fallback');
@@ -220,7 +220,7 @@ class MetadataProvider implements vscode.TextDocumentContentProvider {
 
     private async getMetadataWithNative(fileUri: vscode.Uri, fileName: string): Promise<string> {
         outputChannel.appendLine(`Reading metadata with native ExifTool: ${fileUri.fsPath}`);
-        const { stdout } = await execAsync(`exiftool -json "${fileUri.fsPath}"`);
+        const { stdout } = await execFileAsync('exiftool', ['-json', fileUri.fsPath]);
         const metadataArray = JSON.parse(stdout);
         const metadata = metadataArray[0] || {};
         outputChannel.appendLine(`Successfully read ${Object.keys(metadata).length} metadata fields using native ExifTool`);
