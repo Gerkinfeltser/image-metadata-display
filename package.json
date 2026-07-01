@@ -83,6 +83,7 @@
     "exiftool-vendored.pl": "^13.53.0"
   },
   "overrides": {
-    "fast-uri": "^3.1.2"
+    "fast-uri": "^3.1.2",
+    "form-data": "^4.0.6"
   }
 }
