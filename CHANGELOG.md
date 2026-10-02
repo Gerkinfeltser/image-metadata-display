@@ -5,6 +5,12 @@ All notable changes to the "Image Metadata Inspector" extension will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- Updated the development-tooling `undici` override from 7.29.0 to 7.29.1 to fix the BalancedPool TLS certificate-validation bypass (GHSA-w293-vg96-wgc3). No extension runtime change or release is required.
+- Updated the development packaging-tooling `markdown-it` override to 14.3.1 to address GHSA-253c-mchw-3w2r.
+
 ## [0.1.6] - 2026-01-01
 
 ### Changed
